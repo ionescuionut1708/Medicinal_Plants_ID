@@ -1,77 +1,122 @@
-# Medicinal Plants Identifier App
+```
+# 🌿 Plante Medicinale – Flutter App
+> Identifică plante medicinale cu AI · vezi proprietăți și utilizări terapeutice · istoric local · fără cont
 
-A Flutter application for identifying medicinal plants and learning about their therapeutic properties.
+![screenshot](assets/images/readme_header.png)
 
-## Features
+Aplicatie creată de **Ionescu Ionuț**.
 
-- Take photos of plants directly from the app
-- Upload existing images from your gallery
-- Identify plant species with scientific and common names
-- View detailed information about medicinal properties and therapeutic uses
-- Save identified plants to local history
-- Access saved plants offline
-- No account required - everything stored locally on your device
+---
 
-## Requirements
+## ✨ Caracteristici / Features
+| Funcție | Detalii |
+|---------|---------|
+| 📸 Fotografiere sau încărcare imagine | Poți face poză din aplicație sau selecta din galerie |
+| 🧠 Identificare AI (Llama 4 via Groq) | Primești **nume științific**, **nume comun**, descriere, proprietăți și utilizări – în limba română, cu diacritice |
+| 💾 Istoric local SQflite | Toate identificările se salvează pe dispozitiv, offline |
+| 🔍 Interfață modernă Flutter | Temă verde naturală, fonturi Google Fonts, fallback Noto Sans |
+| 🔐 Fără cont, fără cloud | Cheia API rămâne locală în fișierul `.env` (nu se comite în Git) |
 
-- Flutter 3.0.0 or higher
-- Dart 2.17.0 or higher
-- Android SDK for Android deployment
-- Xcode for iOS deployment
+---
 
-## Getting Started
+## 📦 Requirements
+- **Flutter 3.10+** (Dart 3)
+- Android SDK (API 34+) / Xcode 14+ dacă compilezi pentru iOS
+- Un cont Groq + **GROQ_API_KEY** *(salvat în `.env`)*
 
-### Installation
+---
 
-1. Clone this repository
-2. Navigate to the project directory
-3. Run `flutter pub get` to install dependencies
-4. Connect a device or start an emulator
-5. Run `flutter run` to start the app
+## 🚀 Getting Started
 
-### API Integration
+```bash
+git clone https://github.com/ionescuionut1708/Medicinal_Plants_ID.git
+cd Medicinal_Plants_ID
+flutter pub get
 
-The app is designed to work with Gemini or Llama APIs for plant recognition. To integrate with these APIs:
+# copiază exemplul .env și adaugă cheia ta
+cp .env.example .env
+# editează: GROQ_API_KEY=sk_XXXXXXXXXXXXXXXXXXXXXXXX
 
-1. Obtain an API key from your preferred provider
-2. Open `lib/services/plant_recognition_service.dart`
-3. Replace the placeholder API key with your actual key
-4. Uncomment the appropriate implementation (Gemini or Llama)
+flutter run       # device/emulator conectat
+```
 
-## Project Structure
-
-- `lib/constants/` - App theme and constants
-- `lib/models/` - Data models
-- `lib/screens/` - UI screens
-- `lib/services/` - Business logic and API services
-- `lib/widgets/` - Reusable UI components
-
-## Building for Production
-
-### Android
+### Structură proiect
 
 ```
+lib/
+ ├─ constants/          # AppTheme, culori
+ ├─ models/             # Plant.dart
+ ├─ screens/            # UI screens (home, camera, history, details)
+ ├─ services/           # API & DB (plant_recognition_service, database_service)
+ ├─ utils/              # romanian_text.dart (fix diacritice)
+ └─ widgets/            # componente reutilizabile
+```
+
+---
+
+## 🔧 Build & Release
+
+### Android (APK)
+
+```bash
 flutter build apk --release
+# -> build/app/outputs/flutter-apk/app-release.apk
 ```
 
-The APK file will be available at `build/app/outputs/flutter-apk/app-release.apk`
+### Android (AAB – Google Play)
+
+```bash
+flutter build appbundle --release
+# -> build/app/outputs/bundle/release/app-release.aab
+```
+
+> Aplicațiile noi pe Google Play trebuie să țintească **targetSdk 34** și să folosească **Android App Bundle**.
 
 ### iOS
 
+```bash
+flutter build ios --release     
 ```
-flutter build ios --release
-```
 
-Then open the Xcode project in the `ios` folder and archive it for distribution.
+---
 
-## Permissions
+## 🔑 Env & Secrets
 
-The app requires the following permissions:
+| Fișier | Scop | Ignorat în Git |
+|--------|------|---------------|
+| `.env` | `GROQ_API_KEY=<your_key>` | ✅ `.gitignore → *.env` |
+| `*.jks / *.keystore` | Upload-key Android | ✅ |
+| `key.properties` | parole gradle optional | ✅ |
 
-- Camera - For taking photos of plants
-- Photo Library - For accessing saved images
-- Storage - For saving identified plants locally
+---
 
-## License
+## 🛡️ Permissions
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+| Android Permission | Motiv |
+|--------------------|-------|
+| `CAMERA`           | Fotografiere plantă |
+| `READ_EXTERNAL_STORAGE` | Selectare imagine din galerie |
+| `WRITE_EXTERNAL_STORAGE` | Salvare imagini/istoric (scoped storage) |
+
+---
+
+## 💡 Roadmap / TODO
+
+- 🔄 Live camera preview cu detecție în timp real  
+- 🌐 Traducere interfață EN/RO folosind `flutter_localizations`  
+- ☁️ Firebase Crashlytics & Analytics (opțional)
+
+---
+
+## 🤝 Contribuții
+
+PR-urile și issue-urile sunt binevenite!  
+1. Fork → Branch → PR  
+2. Respectă `flutter format .`  
+3. Scrie mesaj clar de commit.
+
+---
+
+## 📜 License
+
+MIT © 2025 Ionescu Ionuț 
