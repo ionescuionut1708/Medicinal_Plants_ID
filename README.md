@@ -1,8 +1,5 @@
-```
 # 🌿 Plante Medicinale – Flutter App
 > Identifică plante medicinale cu AI · vezi proprietăți și utilizări terapeutice · istoric local · fără cont
-
-![screenshot](assets/images/readme_header.png)
 
 Aplicatie creată de **Ionescu Ionuț**.
 
