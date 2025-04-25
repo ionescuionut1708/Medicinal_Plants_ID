@@ -1,0 +1,2 @@
+D:/Downloads/medicinal_plants_id/android/app/.cxx/RelWithDebInfo/27o5j154/x86/CMakeFiles/edit_cache.dir
+D:/Downloads/medicinal_plants_id/android/app/.cxx/RelWithDebInfo/27o5j154/x86/CMakeFiles/rebuild_cache.dir
